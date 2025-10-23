@@ -1,0 +1,65 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blanchedalmond;
+}
+#contenido_ingreso{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    background-color: bisque;
+    border-color: bisque;
+    border-radius: 5%;
+    box-shadow: 2px 2px 10px;
+    padding: 5%;
+    margin: 5%;
+}
+#formulario_ingreso{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input[type="submit"], button{
+    transition: 1s ease;
+    border-radius: 20px;
+}
+input[type="submit"]:hover, button:hover{
+    background-color: lightgray;
+    font-size: 110%;
+    padding: 5px;
+    border-radius: 10px;
+}
+input[type="text"], input[type="number"]{
+    border-radius: 5px;
+    text-align: center;
+    transition: 1s ease;
+}
+input[type="text"]:hover,input[type="number"]:hover{
+    font-size: 105%;
+    background-color: lightgray;
+}
+input[type="checkbox"]{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    transition: 1s ease;
+}
+input[type="checkbox"]:hover{
+    width: 20px;
+    height: 20px;
+    background-color: lightgray;
+}
+#exito_fracaso{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+    width: 250px;
+    height: 250px;
+}

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>INICIO</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/estilos_INICIO.css') }}">
+    </head>
+    <body>
+        <div id="contenido">
+            <h2>Inicio Ventas</h2>
+            <div id="mostrar_paneles">
+                <a href="{{url_for('rend_pag')}}"><button>Ver Todos los Pagos</button></a>
+                <button onclick="Activarpanel_clientes()">Ver Estado de Clientes</button>
+            </div>
+            <a href="{{url_for('rend_ing')}}"><button>Registrar una Operacion</button></a>
+            <div id="panel_clientes" style="display: none;">
+                <div id="Datos_clientes"></div>
+                <button onclick="Cerrarpanel_clientes()">Cerrar Panel</button>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/Script_Inicio.js') }}"></script>
+        <h3>Sistema-Ventas V1.0</h3>
+    </body>
+</html>

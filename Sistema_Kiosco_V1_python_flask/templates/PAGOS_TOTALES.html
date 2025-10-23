@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>PAGOS</title>    <link rel="stylesheet" href="{{ url_for('static', filename='styles/estilos_PAGOS_TOT.css') }}">
+    </head>
+    <body>
+        <div id="contenido_pagos">
+            <h1>Pagos de Clientes</h1>
+            <div id="Panel_pagos" style="display: none;"></div>
+            <a href="{{url_for('inicio')}}"><button>Regresar</button></a>
+        </div>
+        <h1>Sistema-Ventas V1</h1>
+        <script src="{{ url_for('static', filename='js/Script_Pagos_Totales.js') }}"></script>
+    </body>
+</html>
