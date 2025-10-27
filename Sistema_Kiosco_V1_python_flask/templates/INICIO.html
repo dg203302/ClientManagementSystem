@@ -5,18 +5,83 @@
     </head>
     <body>
         <div id="contenido">
-            <h2>Inicio Ventas</h2>
-            <div id="mostrar_paneles">
-                <a href="{{url_for('rend_pag')}}"><button>Ver Todos los Pagos</button></a>
-                <button onclick="Activarpanel_clientes()">Ver Estado de Clientes</button>
-            </div>
-            <a href="{{url_for('rend_ing')}}"><button>Registrar una Operacion</button></a>
-            <div id="panel_clientes" style="display: none;">
-                <div id="Datos_clientes"></div>
-                <button onclick="Cerrarpanel_clientes()">Cerrar Panel</button>
-            </div>
-        </div>
-        <script src="{{ url_for('static', filename='js/Script_Inicio.js') }}"></script>
-        <h3>Sistema-Ventas V1.0</h3>
+            <header>
+                <h2 id="header_title" data-i18n="title">Managment System</h2>
+                <div id="Selector_idiomas">
+                    <button onclick="Cambiar_ingles()" aria-label="Cambiar a inglés">🇺🇸</button>
+                    <button onclick="Cambiar_espanol()" aria-label="Cambiar a español">🇪🇸</button>
+                </div>
+                <h3>V1.0</h3>
+            </header>
+            <main>
+
+                <section id="contenedor_kpis">
+                    <div id="kpis">
+                        <h2 data-i18n="kpi_users_title">Usuarios Registrados</h2>
+                        <p id="kpi_usuarios">-</p>
+                    </div>
+                    <div id="kpis">
+                        <h2 data-i18n="kpi_total_debt_title">Total Adeudado</h2>
+                        <p id="kpi_total_adeudado">-</p>
+                    </div>
+                    <div id="kpis">
+                        <h2 data-i18n="kpi_total_collected_title">Total Recaudado</h2>
+                        <p id="kpi_total_recaudado">-</p>
+                    </div>
+                    <div id="kpis">
+                        <h2 data-i18n="kpi_monthly_income_title">Ingresos Mensuales</h2>
+                        <p id="kpi_ingresos_mensuales">-</p>
+                    </div>
+                </section>
+                <section id="Botones">
+                    <button id="boton_ver_clientes" data-i18n="btn_view_clients" onclick="Activarpanel_clientes()">Ver Estado de Clientes</button>
+                    <button id="boton_registrar_operacion" data-i18n="btn_register_operation" onclick="mostrarFormularioIngreso()">Registrar una Operacion</button>
+                    <button id="boton_ver_historial" data-i18n="btn_view_payments" onclick="mostrarHistorialPagos()">Ver Historial de Pagos</button>
+                    <button id="boton_ver_deudas" data-i18n="btn_view_debts" onclick="mostrarHistorialDeudas()">Ver Historial de Deudas</button>
+                </section>
+                    
+                <section id="panel_clientes" style="display: none;">
+                    <div id="Datos_clientes"></div>
+                    <button id="boton_cerrar_clientes" data-i18n="btn_close_clients" onclick="Cerrarpanel_clientes()">Cerrar Clientes</button>
+                </section>
+
+                <section id="Historial_de_pagos">
+                    <div id="header_histo">
+                        <h2 data-i18n="hist_payments_title">Historial de Pagos</h2>
+                        <div id="buscar_filtrar">
+                            <label for="Filtrar" data-i18n="label_filter">Filtrar:</label>
+                            <input type="text" id="Filtrar" placeholder="Nombre/Nro de telefono">
+                            <button id="btn_filtrar_pagos" onclick="Filtrar_historial_pagos()" data-i18n="btn_search">Buscar</button>
+                        </div>
+                    </div>
+                    <div id="contenido_historial_pagos"></div>
+                    <div id="footer_histo">
+                        <button id="boton_cerrar_historial" data-i18n="btn_close" onclick="Cerrar_historial_pagos()">Cerrar</button>
+                    </div>
+                </section>
+
+                <section id="Historial_de_Deudas">
+                    <div id="header_histo">
+                        <h2 data-i18n="hist_debts_title">Historial de Deudas</h2>
+                        <div id="buscar_filtrar">
+                            <label for="Filtrar_deudas" data-i18n="label_filter">Filtrar:</label>
+                                <input type="text" id="Filtrar_deudas" placeholder="Nombre/Nro de telefono">
+                                <button id="btn_filtrar_deudas" onclick="Filtrar_historial_deudas()" data-i18n="btn_search">Buscar</button>
+                        </div>
+                        <button id="btn_show_paid_debts" onclick="mostrarDeudasSaldadas()" data-i18n="btn_show_paid_debts">Mostrar Deudas Saldadas</button>
+                        <button id="btn_show_active_debts" onclick="mostrarDeudasActivas()" data-i18n="btn_show_active_debts">Mostrar Deudas Activas</button>
+                    </div>
+                    <div id="contenido_historial_deudas"></div>
+                    <div id="footer_histo">
+                        <button id="boton_cerrar_historial_deudas" data-i18n="btn_close" onclick="Cerrar_historial_deudas()">Cerrar</button>
+                    </div>
+                </section>
+
+            </main>
+            <footer>
+                <h3 data-i18n="footer_text">Managment System - V1.0</h3>
+            </footer>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="{{ url_for('static', filename='js/Script_Inicio.js') }}"></script>
     </body>
 </html>

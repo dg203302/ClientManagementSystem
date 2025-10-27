@@ -7,10 +7,9 @@ class Cliente(Datab.Model):
     Num_cliente=Datab.Column(Datab.Integer, primary_key=True)
     Nombre_cliente=Datab.Column(Datab.String, nullable=False)
     Apellido_cliente=Datab.Column(Datab.String,nullable=False)
-    Telefono_cliente=Datab.Column(Datab.String,nullable=False)
-    Monto_total_pagado=Datab.Column(Datab.Float, default=0.0)
-    Monto_total_adeudado=Datab.Column(Datab.Float, default=0.0)
+    Telefono_cliente=Datab.Column(Datab.String,nullable=False, unique=True)
     Pagos=Datab.relationship('Pago', backref='Cliente', cascade='all, delete-orphan', lazy=True)
+    Deudas=Datab.relationship('Deuda', backref='Cliente', cascade='all, delete-orphan', lazy=True)
 class Pago(Datab.Model):
     __tablename__='Pago'
     Num_pago=Datab.Column(Datab.Integer, primary_key=True)
@@ -18,3 +17,10 @@ class Pago(Datab.Model):
     Fecha_pago=Datab.Column(Datab.String,nullable=False)
     Hora_pago=Datab.Column(Datab.String,nullable=False)
     Monto_pago=Datab.Column(Datab.Float, default=0.0)
+class Deuda(Datab.Model):
+    __tablename__='Deuda'
+    Num_deuda=Datab.Column(Datab.Integer, primary_key=True)
+    Num_cliente=Datab.Column(Datab.Integer, Datab.ForeignKey('Cliente'))
+    Monto_deuda=Datab.Column(Datab.Float, nullable=False)
+    Fecha_reg=Datab.Column(Datab.String, nullable=False)
+    saldada = Datab.Column(Datab.Boolean, default=False)
